@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таби</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-title {
+            cursor: pointer;
+            padding: 0.5rem 1rem; /* Adjusted padding for better visual appearance */
+        }
+        .tab-title.active {
+            background-color: white;
+            font-weight: bold;
+            border-bottom: 2px solid white;
+        }
+        .tab-title.inactive {
+            background-color: #e5e7eb; /* Tailwind's gray-200 */
+        }
+        .tab-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body class="bg-blue-100">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-200 flex">
+        <div class="tab-container">
+            <a href="#" class="tab-title inactive text-gray-700" onclick="openTab(event, 'Замок')">Замок</a>
+            <a href="#" class="tab-title inactive text-gray-700" onclick="openTab(event, 'Оплот')">Оплот</a>
+            <a href="#" class="tab-title inactive text-gray-700" onclick="openTab(event, 'Вежа')">Вежа</a>
+            <a href="#" class="tab-title inactive text-gray-700" onclick="openTab(event, 'Ліс')">Ліс</a>
+            <a href="#" class="tab-title inactive text-gray-700" onclick="openTab(event, 'Печера')">Печера</a>
+            <a href="#" class="tab-title inactive text-gray-700" onclick="openTab(event, 'Море')">Море</a>
+        </div>
+    </nav>
+
+    <!-- Tabs Section -->
+    <div class="tabs">
+        <div id="Замок" class="tab-content active bg-white p-4 shadow rounded-b">
+            <h1 class="text-xl font-bold mb-2">Замок</h1>
+            <p>Традиційне для серії Heroes «лицарське» місто, в якому присутні юніти, найбільш близькі до реальних середньовічних воїнів та ченців, разом із міфічними грифонами та ангелами. Місто має добре оснащену армію, включаючи двох стрільців і двох літаючих воїнів, при швидкій доступності для найму.</p>
+        </div>
+        <div id="Оплот" class="tab-content bg-white p-4 shadow rounded-b">
+            <h1 class="text-xl font-bold mb-2">Оплот</h1>
+            <p>Місто, що є гармонійним співіснуванням цивілізації і дикої природи і населене лісовими створіннями (ельфами, гномами, єдинорогами, дендроїдами), а також є домом для «добрих» зелених і золотих драконів.</p>
+        </div>
+        <div id="Вежа" class="tab-content bg-white p-4 shadow rounded-b">
+            <h1 class="text-xl font-bold mb-2">Вежа</h1>
+            <p>Магічний місто з високою архітектурою баштової, більше інших у грі орієнтований на чари. Герої-воїни, звані алхіміками, за замовчуванням мають книгу заклинань, а герої-маги мають велику ймовірність розвинути всі магічні навички.</p>
+        </div>
+        <div id="Ліс" class="tab-content bg-white p-4 shadow rounded-b">
+            <h1 class="text-xl font-bold mb-2">Ліс</h1>
+            <p>Загадковий ліс, сповнений таємниць і пригод. Тут мешкають дивовижні істоти, такі як єдинороги та чарівні феї, які захищають свої володіння від непроханих гостей.</p>
+        </div>
+        <div id="Печера" class="tab-content bg-white p-4 shadow rounded-b">
+            <h1 class="text-xl font-bold mb-2">Печера</h1>
+            <p>Темна і волога печера, де проживають найрізноманітніші істоти. Від кажанів до глибоководних риб, тут можна знайти будь-що. Сміливці приходять сюди в пошуках скарбів і пригод.</p>
+        </div>
+        <div id="Море" class="tab-content bg-white p-4 shadow rounded-b">
+            <h1 class="text-xl font-bold mb-2">Море</h1>
+            <p>Безмежне море з його таємничими глибинами. Тут живуть морські дракони і русалки, а також ховаються загублені міста і скарби піратів.</p>
+        </div>
+    </div>
+
+    <script>
+        function openTab(event, tabName) {
+            event.preventDefault();
+
+            // Hide all tab content
+            document.querySelectorAll('.tab-content').forEach((tabContent) => {
+                tabContent.classList.remove('active');
+            });
+
+            // Show the selected tab content
+            document.getElementById(tabName).classList.add('active');
+
+            // Reset all tab titles to inactive
+            document.querySelectorAll('.tab-title').forEach((tabTitle) => {
+                tabTitle.classList.remove('active');
+                tabTitle.classList.add('inactive');
+            });
+
+            // Set the clicked tab title to active
+            event.target.classList.remove('inactive');
+            event.target.classList.add('active');
+        }
+
+        // Set the initial active tab
+        document.querySelector('.tab-title').classList.add('active');
+        document.querySelector('.tab-title').classList.remove('inactive');
+    </script>
+
+</body>
+</html>
